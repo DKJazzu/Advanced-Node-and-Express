@@ -2,15 +2,19 @@
 require('dotenv').config();
 const express = require('express');
 const fccTesting = require('./freeCodeCamp/fcctesting.js');
-const cors = require('cors');
 
 const app = express();
 
 app.set('view engine', 'pug');
 app.set('views', './views/pug');
 
-app.use(cors());
-fccTesting(app); // For fCC testing purposes
+app.use((req, res, next) => {
+  res.set('Access-Control-Allow-Origin', 'https://www.freecodecamp.org');
+  res.set('Access-Control-Allow-Credentials', true);
+  next();
+});
+
+fccTesting(app); 
 app.use('/public', express.static(process.cwd() + '/public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
