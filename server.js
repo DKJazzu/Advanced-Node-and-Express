@@ -7,13 +7,14 @@ const fccTesting = require('./freeCodeCamp/fcctesting.js');
 const app = express();
 
 app.set('view engine', 'pug');
+app.set('views', './views/pug');
 fccTesting(app); // For fCC testing purposes
 app.use('/public', express.static(process.cwd() + '/public'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.route('/').get((req, res) => {
-  res.render('pug');
+  res.render('index');
 });
 
 const PORT = process.env.PORT || 3000;
