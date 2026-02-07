@@ -14,7 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.route('/').get((req, res) => {
-  res.render('./pug/index.pug');
+  res.render('index.pug');
 });
 
 const PORT = process.env.PORT || 3000;
