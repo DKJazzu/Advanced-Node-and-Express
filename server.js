@@ -2,6 +2,8 @@
 require('dotenv').config();
 const express = require('express');
 const fccTesting = require('./freeCodeCamp/fcctesting.js');
+const cors = require('cors');
+app.use(cors());
 
 const app = express();
 
