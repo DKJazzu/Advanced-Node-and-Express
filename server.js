@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const myDB = require('./connection');
 const fccTesting = require('./freeCodeCamp/fcctesting.js');
+const pug = require('pug');
 
 const app = express();
 
@@ -14,7 +15,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.route('/').get((req, res) => {
-  res.render('index', { title: 'Hello', message: 'Please log in' });
+  res.render('pug');
 });
 
 const PORT = process.env.PORT || 3000;
